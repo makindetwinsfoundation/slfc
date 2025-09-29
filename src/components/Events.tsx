@@ -13,15 +13,6 @@ const Events: React.FC = () => {
       image: "https://images.pexels.com/photos/8923019/pexels-photo-8923019.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
-      title: "Community Food Drive",
-      date: "March 15, 2025",
-      time: "9:00 AM - 3:00 PM",
-      location: "Church Parking Lot",
-      description: "Help us collect food donations for local families in need.",
-      recurring: false,
-      image: "https://images.pexels.com/photos/6646943/pexels-photo-6646943.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
-    },
-    {
       title: "Youth Group Meeting",
       date: "Every Friday",
       time: "7:00 PM",
@@ -31,15 +22,6 @@ const Events: React.FC = () => {
       image: "https://images.pexels.com/photos/8923057/pexels-photo-8923057.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
-      title: "Easter Celebration",
-      date: "April 20, 2025",
-      time: "10:30 AM",
-      location: "Main Sanctuary",
-      description: "Celebrate the resurrection with special music and message.",
-      recurring: false,
-      image: "https://images.pexels.com/photos/1662770/pexels-photo-1662770.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
-    },
-    {
       title: "Wednesday Bible Study",
       date: "Every Wednesday",
       time: "7:00 PM",
@@ -47,15 +29,6 @@ const Events: React.FC = () => {
       description: "Deep dive into God's Word with discussion and prayer.",
       recurring: true,
       image: "https://images.pexels.com/photos/7671116/pexels-photo-7671116.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
-    },
-    {
-      title: "Church Picnic",
-      date: "May 25, 2025",
-      time: "12:00 PM - 4:00 PM",
-      location: "City Park",
-      description: "Family fun with games, food, and fellowship.",
-      recurring: false,
-      image: "https://images.pexels.com/photos/6238148/pexels-photo-6238148.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     }
   ];
 
