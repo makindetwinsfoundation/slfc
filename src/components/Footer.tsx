@@ -45,6 +45,7 @@ const Footer: React.FC = () => {
               <li><a href="#about" className="text-gray-300 hover:text-purple-400 transition-colors duration-300">About Us</a></li>
               <li><a href="#ministries" className="text-gray-300 hover:text-purple-400 transition-colors duration-300">Ministries</a></li>
               <li><a href="#events" className="text-gray-300 hover:text-purple-400 transition-colors duration-300">Events</a></li>
+              <li><a href="#blog" className="text-gray-300 hover:text-purple-400 transition-colors duration-300">Blog</a></li>
               <li><a href="#contact" className="text-gray-300 hover:text-purple-400 transition-colors duration-300">Contact</a></li>
               <li><a href="#" className="text-gray-300 hover:text-purple-400 transition-colors duration-300">Sermons</a></li>
               <li><a href="#" className="text-gray-300 hover:text-purple-400 transition-colors duration-300">Give Online</a></li>

@@ -36,6 +36,9 @@ const Header: React.FC = () => {
             <a href="#events" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
               Events
             </a>
+            <a href="#blog" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
+              Blog
+            </a>
             <a href="#contact" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
               Contact
             </a>
@@ -71,6 +74,9 @@ const Header: React.FC = () => {
               </a>
               <a href="#events" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
                 Events
+              </a>
+              <a href="#blog" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
+                Blog
               </a>
               <a href="#contact" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
                 Contact

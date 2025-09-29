@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Ministries from './components/Ministries';
 import Events from './components/Events';
+import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -15,6 +16,7 @@ function App() {
       <About />
       <Ministries />
       <Events />
+      <Blog />
       <Contact />
       <Footer />
     </div>
