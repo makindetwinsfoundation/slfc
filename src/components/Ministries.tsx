@@ -19,7 +19,7 @@ const Ministries: React.FC = () => {
       icon: Music,
       title: "Worship Ministry",
       description: "Join our choir, band, or tech team to help lead our congregation in worship.",
-      image: "https://images.pexels.com/photos/7005611/pexels-photo-7005611.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+      image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_21-44-54.jpg"
     },
     {
       icon: Handshake,
