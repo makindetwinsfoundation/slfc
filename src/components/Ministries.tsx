@@ -31,7 +31,7 @@ const Ministries: React.FC = () => {
       icon: BookOpen,
       title: "Youth Ministry",
       description: "Dynamic programs for teenagers focused on faith, friendship, and fun.",
-      image: "https://images.pexels.com/photos/8923057/pexels-photo-8923057.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+      image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_23-06-31.jpg"
     },
     {
       icon: Coffee,
