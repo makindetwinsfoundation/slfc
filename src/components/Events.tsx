@@ -13,10 +13,10 @@ const Events: React.FC = () => {
       image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_21-45-01.jpg"
     },
     {
-      title: "Youth Group Meeting",
-      date: "Every Friday",
+      title: "Youth Christian Apologetics Hangout",
+      date: "Every Sunday",
       time: "7:00 PM",
-      location: "Youth Room",
+      location: "Zoom",
       description: "Fun activities, games, and Bible study for teens.",
       recurring: true,
       image: "https://images.pexels.com/photos/8923057/pexels-photo-8923057.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
