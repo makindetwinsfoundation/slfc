@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.4)), url('https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_21-45-01.jpg')`
+          backgroundImage: `linear-gradient(rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.4)), url('https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_21-37-04.jpg')`
         }}
       />
       
