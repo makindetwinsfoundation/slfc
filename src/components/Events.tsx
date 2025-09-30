@@ -6,11 +6,11 @@ const Events: React.FC = () => {
     {
       title: "Sunday Worship Service",
       date: "Every Sunday",
-      time: "10:30 AM",
+      time: "8:00 AM",
       location: "Main Sanctuary",
       description: "Join us for uplifting worship, inspiring messages, and fellowship.",
       recurring: true,
-      image: "https://images.pexels.com/photos/8923019/pexels-photo-8923019.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_21-45-01.jpg"
     },
     {
       title: "Youth Group Meeting",
