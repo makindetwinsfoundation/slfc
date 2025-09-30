@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { supabase, BlogPost } from '../lib/supabase';
-import { Plus, Edit, Trash2, Eye, EyeOff, Save, X, LogOut } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2, Eye, EyeOff, Save, X, LogOut } from 'lucide-react';
 
 const AdminBlogPage: React.FC = () => {
   const { user, signOut } = useAuth();
