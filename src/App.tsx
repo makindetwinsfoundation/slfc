@@ -1,4 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import LoginPage from './pages/LoginPage';
+import AdminBlogPage from './pages/AdminBlogPage';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,18 +13,39 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+const HomePage: React.FC = () => (
+  <>
+    <Header />
+    <Hero />
+    <About />
+    <Ministries />
+    <Events />
+    <Blog />
+    <Contact />
+    <Footer />
+  </>
+);
+
 function App() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Ministries />
-      <Events />
-      <Blog />
-      <Contact />
-      <Footer />
-    </div>
+    <AuthProvider>
+      <Router>
+        <div className="min-h-screen">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route 
+              path="/admin" 
+              element={
+                <ProtectedRoute>
+                  <AdminBlogPage />
+                </ProtectedRoute>
+              } 
+            />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

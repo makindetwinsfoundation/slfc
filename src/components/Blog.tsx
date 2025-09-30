@@ -1,119 +1,54 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { supabase, BlogPost as SupabaseBlogPost, Comment } from '../lib/supabase';
 import { Heart, MessageCircle, Share2, Calendar, User, ChevronRight, BookOpen, Eye } from 'lucide-react';
 
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  date: string;
-  image: string;
-  likes: number;
+// Extend the Supabase BlogPost type to include comments for the UI
+interface BlogPost extends SupabaseBlogPost {
   comments: Comment[];
-  views: number;
-  category: string;
-  readTime: string;
-}
-
-interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  date: string;
-  avatar: string;
+  readTime: string; // Map from read_time
 }
 
 const Blog: React.FC = () => {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
-  const [likedPosts, setLikedPosts] = useState<Set<number>>(new Set());
+  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
   const [newComment, setNewComment] = useState('');
   const [commentAuthor, setCommentAuthor] = useState('');
 
-  const blogPosts: BlogPost[] = [
-    {
-      id: 1,
-      title: "Walking in Faith During Difficult Times",
-      excerpt: "Life often presents us with challenges that test our faith. In these moments, we must remember that God's love never wavers, and His plan for us remains perfect...",
-      content: "Life often presents us with challenges that test our faith. In these moments, we must remember that God's love never wavers, and His plan for us remains perfect. When we face difficulties, it's natural to question why certain things happen to us. However, these trials are opportunities for spiritual growth and deeper connection with our Creator.\n\nThe Bible tells us in Romans 8:28 that 'all things work together for good to those who love God, to those who are the called according to His purpose.' This doesn't mean that all things are good, but that God can use even our most difficult circumstances for our ultimate benefit and His glory.\n\nAs we navigate through life's storms, let us hold fast to our faith, support one another in love, and trust in God's perfect timing. Remember, you are never alone in your struggles - our church family is here to walk alongside you, and most importantly, God is always with you.",
-      author: "Pastor Michael Johnson",
-      date: "2025-01-15",
-      image: "https://images.pexels.com/photos/8923019/pexels-photo-8923019.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
-      likes: 42,
-      views: 156,
-      category: "Faith & Life",
-      readTime: "5 min read",
-      comments: [
-        {
-          id: 1,
-          author: "Sarah Williams",
-          content: "Thank you Pastor for this encouraging message. It really spoke to my heart during a difficult time.",
-          date: "2025-01-16",
-          avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
-        },
-        {
-          id: 2,
-          author: "David Chen",
-          content: "Romans 8:28 has been my anchor verse this year. God is faithful!",
-          date: "2025-01-16",
-          avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
-        }
-      ]
-    },
-    {
-      id: 2,
-      title: "The Power of Community in Christian Life",
-      excerpt: "God designed us for relationship - with Him and with each other. The early church understood this principle deeply, and we can learn much from their example...",
-      content: "God designed us for relationship - with Him and with each other. The early church understood this principle deeply, and we can learn much from their example of authentic Christian community.\n\nIn Acts 2:42-47, we see a beautiful picture of believers who 'devoted themselves to the apostles' teaching and to fellowship, to the breaking of bread and to prayer.' They shared their lives, their resources, and their faith journey together.\n\nTrue Christian community goes beyond Sunday morning gatherings. It involves:\n\n• Authentic relationships built on trust and vulnerability\n• Mutual support during both joyful and challenging times\n• Accountability that helps us grow in our faith\n• Shared mission in serving God and others\n• Celebration of God's goodness together\n\nAs we continue to build our church family, I encourage each of you to take steps toward deeper community. Join a small group, volunteer in ministry, or simply reach out to someone you don't know well. God has amazing things in store when His people come together in unity and love.",
-      author: "Pastor Michael Johnson",
-      date: "2025-01-08",
-      image: "https://images.pexels.com/photos/8923057/pexels-photo-8923057.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
-      likes: 38,
-      views: 203,
-      category: "Community",
-      readTime: "4 min read",
-      comments: [
-        {
-          id: 3,
-          author: "Maria Rodriguez",
-          content: "This is exactly what I needed to hear. I've been hesitant to join a small group, but now I'm ready to take that step!",
-          date: "2025-01-09",
-          avatar: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
-        }
-      ]
-    },
-    {
-      id: 3,
-      title: "Preparing Our Hearts for Easter",
-      excerpt: "As we approach the Easter season, it's important to prepare our hearts to fully experience the wonder of Christ's resurrection...",
-      content: "As we approach the Easter season, it's important to prepare our hearts to fully experience the wonder of Christ's resurrection. Easter is not just a single day of celebration, but the culmination of a journey that begins with reflection and repentance.\n\nThe season of Lent traditionally provides us with 40 days to examine our lives, confess our sins, and draw closer to God through prayer, fasting, and acts of service. Even if you don't observe Lent formally, taking time to prepare spiritually for Easter can deepen your appreciation for what Christ accomplished on the cross.\n\nHere are some ways to prepare your heart:\n\n• Spend extra time in prayer and Bible reading\n• Practice gratitude for God's blessings in your life\n• Serve others in your community\n• Forgive those who have hurt you\n• Examine areas where you need God's forgiveness\n\nThe resurrection of Jesus Christ is the cornerstone of our faith. It represents victory over sin and death, and the promise of eternal life for all who believe. Let's prepare our hearts to celebrate this incredible gift with the joy and reverence it deserves.",
-      author: "Pastor Michael Johnson",
-      date: "2025-01-01",
-      image: "https://images.pexels.com/photos/1662770/pexels-photo-1662770.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
-      likes: 67,
-      views: 289,
-      category: "Seasonal",
-      readTime: "6 min read",
-      comments: [
-        {
-          id: 4,
-          author: "Robert Thompson",
-          content: "Beautiful reminder of what Easter truly means. Thank you for helping us focus on the spiritual preparation.",
-          date: "2025-01-02",
-          avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
-        },
-        {
-          id: 5,
-          author: "Jennifer Lee",
-          content: "I love the practical suggestions for heart preparation. Starting my Easter journey today!",
-          date: "2025-01-02",
-          avatar: "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
-        }
-      ]
-    }
-  ];
+  useEffect(() => {
+    fetchBlogPosts();
+  }, []);
 
-  const handleLike = (postId: number) => {
+  const fetchBlogPosts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('published', true)
+        .order('date', { ascending: false });
+
+      if (error) throw error;
+
+      // Transform the data to match our UI expectations
+      const transformedPosts: BlogPost[] = (data || []).map(post => ({
+        ...post,
+        readTime: post.read_time || '5 min read',
+        comments: [] // For now, we'll use empty comments array
+      }));
+
+      setBlogPosts(transformedPosts);
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
+      // Fallback to empty array if there's an error
+      setBlogPosts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLike = (postId: string) => {
     setLikedPosts(prev => {
       const newLiked = new Set(prev);
       if (newLiked.has(postId)) {
@@ -139,7 +74,7 @@ const Blog: React.FC = () => {
     }
   };
 
-  const handleAddComment = (postId: number) => {
+  const handleAddComment = (postId: string) => {
     if (newComment.trim() && commentAuthor.trim()) {
       // In a real app, this would make an API call
       console.log('Adding comment:', { postId, author: commentAuthor, content: newComment });
@@ -156,6 +91,19 @@ const Blog: React.FC = () => {
       day: 'numeric'
     });
   };
+
+  if (loading) {
+    return (
+      <section id="blog" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading blog posts...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (selectedPost) {
     return (
@@ -317,7 +265,7 @@ const Blog: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
+          {blogPosts.length > 0 ? blogPosts.map((post) => (
             <article 
               key={post.id} 
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group cursor-pointer"
@@ -396,7 +344,15 @@ const Blog: React.FC = () => {
                 </div>
               </div>
             </article>
-          ))}
+          )) : (
+            <div className="col-span-full text-center py-12">
+              <div className="text-gray-400 mb-4">
+                <BookOpen className="h-16 w-16 mx-auto" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">No blog posts yet</h3>
+              <p className="text-gray-600">Check back soon for inspiring messages from Pastor Michael Johnson.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
