@@ -55,7 +55,7 @@ const About: React.FC = () => {
           <div 
             className="rounded-2xl shadow-2xl h-96 bg-cover bg-center"
             style={{
-              backgroundImage: `url('https://images.pexels.com/photos/247932/pexels-photo-247932.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop')`
+              backgroundImage: `url('https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_21-45-01.jpg')`
             }}
           />
         </div>
