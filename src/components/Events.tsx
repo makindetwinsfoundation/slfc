@@ -24,7 +24,7 @@ const Events: React.FC = () => {
     {
       title: "Wednesday Bible Study",
       date: "Every Wednesday",
-      time: "7:00 PM",
+      time: "10:00 AM",
       location: "Fellowship Hall",
       description: "Deep dive into God's Word with discussion and prayer.",
       recurring: true,
