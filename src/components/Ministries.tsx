@@ -7,7 +7,7 @@ const Ministries: React.FC = () => {
       icon: Users,
       title: "Adult Ministries",
       description: "Bible studies, small groups, and fellowship opportunities for adults of all ages.",
-      image: "https://images.pexels.com/photos/7671116/pexels-photo-7671116.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+      image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_23-21-22.jpg"
     },
     {
       icon: Baby,
