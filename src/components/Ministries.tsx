@@ -25,7 +25,7 @@ const Ministries: React.FC = () => {
       icon: Handshake,
       title: "Community Outreach",
       description: "Serving our local community through food drives, charity events, and volunteer work.",
-      image: "https://images.pexels.com/photos/6646943/pexels-photo-6646943.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+      image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_22-51-37.jpg"
     },
     {
       icon: BookOpen,
