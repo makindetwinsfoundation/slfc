@@ -13,7 +13,7 @@ const Ministries: React.FC = () => {
       icon: Baby,
       title: "Children's Ministry",
       description: "Age-appropriate programs that help children learn about God's love in fun, engaging ways.",
-      image: "https://images.pexels.com/photos/8923019/pexels-photo-8923019.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+      image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-09-30_21-33-19.jpg"
     },
     {
       icon: Music,
