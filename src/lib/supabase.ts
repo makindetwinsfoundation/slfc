@@ -28,9 +28,10 @@ export interface BlogPost {
 }
 
 export interface Comment {
-  id: number;
+  id: string;
+  created_at: string;
+  post_id: string;
   author: string;
   content: string;
-  date: string;
   avatar: string;
 }
