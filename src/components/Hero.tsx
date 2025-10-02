@@ -24,9 +24,14 @@ const Hero: React.FC = () => {
           <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
             Plan Your Visit
           </button>
-          <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+          <a 
+            href="https://youtube.com/@shininglightfamilychurch6399?si=9qSExD-iZaOd0yp3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 inline-block text-center"
+          >
             Watch Online
-          </button>
+          </a>
         </div>
 
         <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 mx-auto max-w-2xl">
