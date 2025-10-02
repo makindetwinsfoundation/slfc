@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              A community of believers dedicated to sharing God's love, growing in faith, 
+              A body of Christ dedicated to sharing God's love, growing in faith, 
               and serving our community with compassion and grace.
             </p>
             <div className="flex space-x-4">
@@ -58,22 +58,22 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-purple-400 mr-3 mt-0.5" />
-                <p className="text-gray-300">123 Faith Street<br />Hope City, HC 12345</p>
+                <p className="text-gray-300"> behind state hospital<br />, Obasanjo farm road, off idiroko road ota ogun state</p>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 text-purple-400 mr-3" />
-                <p className="text-gray-300">(555) 123-4567</p>
+                <p className="text-gray-300">+2347033579391</p>
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-purple-400 mr-3" />
-                <p className="text-gray-300">info@shininglightchurch.org</p>
+                <p className="text-gray-300">contact@slfcfamilyww.org</p>
               </div>
             </div>
 
             <div className="mt-8 p-4 bg-gray-800 rounded-lg">
               <h5 className="font-semibold text-purple-400 mb-2">Service Times</h5>
-              <p className="text-sm text-gray-300">Sunday Worship: 10:30 AM</p>
-              <p className="text-sm text-gray-300">Wednesday Bible Study: 7:00 PM</p>
+              <p className="text-sm text-gray-300">Sunday Worship: 8:00 AM</p>
+              <p className="text-sm text-gray-300">Wednesday Bible Study: 10:00 AM</p>
             </div>
           </div>
         </div>
