@@ -34,11 +34,11 @@ const Hero: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-4 text-center">
             <div className="flex items-center justify-center space-x-2">
               <Clock className="h-5 w-5 text-purple-200" />
-              <span className="font-medium">10:30 AM</span>
+              <span className="font-medium">8:00 AM</span>
             </div>
             <div className="flex items-center justify-center space-x-2">
               <MapPin className="h-5 w-5 text-purple-200" />
-              <span className="font-medium">123 Faith Street</span>
+              <span className="font-medium"> behind state hospital Ota</span>
             </div>
             <div className="flex items-center justify-center space-x-2">
               <Calendar className="h-5 w-5 text-purple-200" />
