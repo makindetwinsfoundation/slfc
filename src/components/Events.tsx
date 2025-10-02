@@ -17,7 +17,7 @@ const Events: React.FC = () => {
       date: "Every Sunday",
       time: "8:00 PM",
       location: "Zoom",
-      description: "Fun activities, games, and Bible study for teens.",
+      description: "Learning about Who God is, what we believe and why we believe what we believe.",
       recurring: true,
       image: "https://images.pexels.com/photos/8923057/pexels-photo-8923057.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
