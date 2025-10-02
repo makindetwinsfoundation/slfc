@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">Address</h4>
-                  <p className="text-gray-600">123 Faith Street<br />Hope City, HC 12345</p>
+                  <p className="text-gray-600">behind state Hospital<br />Obasanjo farm road, Ota</p>
                 </div>
               </div>
 
@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">Phone</h4>
-                  <p className="text-gray-600">(555) 123-4567</p>
+                  <p className="text-gray-600">+2347033579391</p>
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">Email</h4>
-                  <p className="text-gray-600">info@shininglightchurch.org</p>
+                  <p className="text-gray-600">contact@slfcfamilyww.org</p>
                 </div>
               </div>
 
@@ -100,15 +100,15 @@ const Contact: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="font-medium text-gray-700">Sunday Worship</span>
-                  <span className="text-gray-600">10:30 AM</span>
+                  <span className="text-gray-600">8:00 AM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium text-gray-700">Wednesday Bible Study</span>
-                  <span className="text-gray-600">7:00 PM</span>
+                  <span className="text-gray-600">10:00 AM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-medium text-gray-700">Friday Youth Group</span>
-                  <span className="text-gray-600">7:00 PM</span>
+                  <span className="font-medium text-gray-700">Friday christian Apologetics Group</span>
+                  <span className="text-gray-600">8:00 PM</span>
                 </div>
               </div>
             </div>
