@@ -33,7 +33,7 @@ const About: React.FC = () => {
             About Our <span className="text-purple-600">Church</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            For over 25 years, Shining Light Family Church has been a beacon of hope 
+            For decades, Shining Light Family Church has been a beacon of hope 
             and love in our community. We are a diverse family of believers committed 
             to growing together in faith, hope, and love.
           </p>
