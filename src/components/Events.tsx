@@ -15,7 +15,7 @@ const Events: React.FC = () => {
     {
       title: "Youth Christian Apologetics Hangout",
       date: "Every Sunday",
-      time: "7:00 PM",
+      time: "8:00 PM",
       location: "Zoom",
       description: "Fun activities, games, and Bible study for teens.",
       recurring: true,
