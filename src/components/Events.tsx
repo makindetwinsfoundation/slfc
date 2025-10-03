@@ -37,7 +37,7 @@ const Events: React.FC = () => {
       location: "Church Auditorium",
       description: "A dedicated prayer service to bring your petitions before God.",
       recurring: true,
-      image: "https://images.pexels.com/photos/102061/pexels-photo-102061.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/photo_2025-10-03_16-02-34.jpg"
     }
   ];
 
