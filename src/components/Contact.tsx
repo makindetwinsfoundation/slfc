@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
                   <span className="text-gray-600">5:55 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-medium text-gray-700">Friday christian Apologetics Group</span>
+                  <span className="font-medium text-gray-700">christian Apologetics Hangout</span>
                   <span className="text-gray-600">8:00 PM</span>
                 </div>
               </div>
