@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium text-gray-700">Wednesday Bible Study</span>
-                  <span className="text-gray-600">10:00 AM</span>
+                  <span className="text-gray-600">5:55 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium text-gray-700">Friday christian Apologetics Group</span>
