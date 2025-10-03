@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { supabase, BlogPost } from '../lib/supabase';
-import { Plus, CreditCard as Edit, Trash2, Eye, EyeOff, Save, X, LogOut } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2, Eye, EyeOff, Save, X, LogOut, Upload, Image as ImageIcon } from 'lucide-react';
 
 const AdminBlogPage: React.FC = () => {
   const { user, signOut } = useAuth();
@@ -9,6 +9,9 @@ const AdminBlogPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string>('');
   const [formData, setFormData] = useState({
     title: '',
     excerpt: '',
@@ -41,16 +44,71 @@ const AdminBlogPage: React.FC = () => {
     }
   };
 
+  const uploadImage = async (file: File): Promise<string> => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
+    const filePath = `blog-images/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('blog-images')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    const { data } = supabase.storage
+      .from('blog-images')
+      .getPublicUrl(filePath);
+
+    return data.publicUrl;
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      setFormData({ ...formData, image: '' }); // Clear URL when file is selected
+      
+      // Create preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageUrlChange = (url: string) => {
+    setFormData({ ...formData, image: url });
+    setSelectedFile(null); // Clear file when URL is entered
+    setImagePreview(url);
+  };
+
+  const clearImage = () => {
+    setSelectedFile(null);
+    setImagePreview('');
+    setFormData({ ...formData, image: '' });
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     try {
+      let imageUrl = formData.image;
+      
+      // Upload image if file is selected
+      if (selectedFile) {
+        setUploadingImage(true);
+        imageUrl = await uploadImage(selectedFile);
+      }
+
       if (editingPost) {
         // Update existing post
         const { error } = await supabase
           .from('blog_posts')
           .update({
             ...formData,
+            image: imageUrl,
             user_id: user?.id,
           })
           .eq('id', editingPost.id);
@@ -62,6 +120,7 @@ const AdminBlogPage: React.FC = () => {
           .from('blog_posts')
           .insert([{
             ...formData,
+            image: imageUrl,
             user_id: user?.id,
             likes: 0,
             views: 0,
@@ -76,6 +135,8 @@ const AdminBlogPage: React.FC = () => {
     } catch (error) {
       console.error('Error saving post:', error);
       alert('Error saving post. Please try again.');
+    } finally {
+      setUploadingImage(false);
     }
   };
 
@@ -92,6 +153,7 @@ const AdminBlogPage: React.FC = () => {
       read_time: post.read_time,
       published: post.published,
     });
+    setImagePreview(post.image);
     setShowForm(true);
   };
 
@@ -139,6 +201,8 @@ const AdminBlogPage: React.FC = () => {
       published: false,
     });
     setEditingPost(null);
+    setSelectedFile(null);
+    setImagePreview('');
     setShowForm(false);
   };
 
@@ -309,15 +373,67 @@ const AdminBlogPage: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Image URL
+                    Post Image
                   </label>
-                  <input
-                    type="url"
-                    value={formData.image}
-                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="https://example.com/image.jpg"
-                  />
+                  
+                  {/* Image Preview */}
+                  {imagePreview && (
+                    <div className="mb-4 relative">
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="w-full h-48 object-cover rounded-lg border"
+                      />
+                      <button
+                        type="button"
+                        onClick={clearImage}
+                        className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full transition-colors duration-300"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  )}
+                  
+                  {/* Upload Options */}
+                  <div className="space-y-4">
+                    {/* File Upload */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-600 mb-2">
+                        Upload Image File
+                      </label>
+                      <div className="flex items-center space-x-4">
+                        <label className="flex items-center space-x-2 bg-gray-50 hover:bg-gray-100 border border-gray-300 rounded-lg px-4 py-3 cursor-pointer transition-colors duration-300">
+                          <Upload className="h-5 w-5 text-gray-500" />
+                          <span className="text-gray-700">Choose File</span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileSelect}
+                            className="hidden"
+                          />
+                        </label>
+                        {selectedFile && (
+                          <span className="text-sm text-gray-600">
+                            {selectedFile.name}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {/* URL Input */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-600 mb-2">
+                        Or Enter Image URL
+                      </label>
+                      <input
+                        type="url"
+                        value={formData.image}
+                        onChange={(e) => handleImageUrlChange(e.target.value)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        placeholder="https://example.com/image.jpg"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex items-center">
@@ -343,10 +459,20 @@ const AdminBlogPage: React.FC = () => {
                   </button>
                   <button
                     type="submit"
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                    disabled={uploadingImage}
+                    className="bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:transform-none flex items-center space-x-2"
                   >
-                    <Save className="h-5 w-5" />
-                    <span>{editingPost ? 'Update Post' : 'Create Post'}</span>
+                    {uploadingImage ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                        <span>Uploading Image...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Save className="h-5 w-5" />
+                        <span>{editingPost ? 'Update Post' : 'Create Post'}</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
