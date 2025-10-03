@@ -41,6 +41,18 @@ const Events: React.FC = () => {
     }
   ];
 
+  const upcomingEvents = [
+    {
+      title: "Evening of Hymns",
+      date: "Sunday, October 5th, 2025",
+      time: "4:00 - 6:00 PM",
+      location: "Main Sanctuary",
+      description: "Join us for a beautiful evening filled with traditional hymns and worship songs that have blessed generations.",
+      recurring: false,
+      image: "https://images.pexels.com/photos/6963944/pexels-photo-6963944.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+    }
+  ];
+
   return (
     <section id="events" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,7 +66,61 @@ const Events: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        {/* Upcoming Special Events */}
+        {upcomingEvents.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              Special <span className="text-purple-600">Events</span>
+            </h3>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {upcomingEvents.map((event, index) => (
+                <div 
+                  key={`special-${index}`}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border-2 border-purple-200"
+                >
+                  <div className="lg:flex">
+                    <div 
+                      className="lg:w-1/3 h-48 lg:h-auto bg-cover bg-center relative overflow-hidden"
+                      style={{ backgroundImage: `url('${event.image}')` }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 group-hover:to-black/40 transition-all duration-300" />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-gradient-to-r from-purple-600 to-purple-700 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-lg">
+                          Special Event
+                        </span>
+                      </div>
+                    </div>
+                    <div className="lg:w-2/3 p-8">
+                      <h4 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">
+                        {event.title}
+                      </h4>
+                      <p className="text-gray-600 leading-relaxed mb-6">{event.description}</p>
+                      
+                      <div className="space-y-3">
+                        <div className="flex items-center text-gray-600">
+                          <Calendar className="h-5 w-5 text-purple-600 mr-3" />
+                          <span className="font-medium">{event.date}</span>
+                        </div>
+                        <div className="flex items-center text-gray-600">
+                          <Clock className="h-5 w-5 text-purple-600 mr-3" />
+                          <span className="font-medium">{event.time}</span>
+                        </div>
+                        <div className="flex items-center text-gray-600">
+                          <MapPin className="h-5 w-5 text-purple-600 mr-3" />
+                          <span className="font-medium">{event.location}</span>
+                        </div>
+                      </div>
+                      
+                      <button className="mt-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
           {events.map((event, index) => (
             <div 
               key={index} 
@@ -108,4 +174,12 @@ const Events: React.FC = () => {
   );
 };
 
+        {/* Regular Events */}
+        <div className="mb-8">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Regular <span className="text-purple-600">Services</span>
+          </h3>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8">
 export default Events;
