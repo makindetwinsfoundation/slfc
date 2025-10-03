@@ -6,7 +6,7 @@ const Events: React.FC = () => {
     {
       title: "Sunday Worship Service",
       date: "Every Sunday",
-      time: "8:00 AM",
+      time: "9:00 AM",
       location: "Main Sanctuary",
       description: "Join us for uplifting worship, inspiring messages, and fellowship.",
       recurring: true,
