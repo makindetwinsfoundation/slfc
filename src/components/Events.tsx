@@ -29,6 +29,24 @@ const Events: React.FC = () => {
       description: "Deep dive into God's Word with discussion and prayer.",
       recurring: true,
       image: "https://images.pexels.com/photos/7671116/pexels-photo-7671116.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+    },
+    {
+      title: "Wednesday Word Encounter Service",
+      date: "Every Wednesday",
+      time: "5:55 PM",
+      location: "Main Sanctuary",
+      description: "Join us for a powerful mid-week service focused on the Word of God.",
+      recurring: true,
+      image: "https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+    },
+    {
+      title: "Present Your Case Prayer Service",
+      date: "Last Friday of the Month",
+      time: "5:55 PM",
+      location: "Church Auditorium",
+      description: "A dedicated prayer service to bring your petitions before God.",
+      recurring: true,
+      image: "https://images.pexels.com/photos/102061/pexels-photo-102061.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     }
   ];
 
