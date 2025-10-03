@@ -367,7 +367,7 @@ const Blog: React.FC = () => {
             Pastor's <span className="text-purple-600">Blog</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Inspiring messages, spiritual insights, and encouragement from Pastor Michael Johnson. 
+            Inspiring messages, spiritual insights, and encouragement from Rev Olubunmi Idowu. 
             Join the conversation and grow in faith together.
           </p>
         </div>
