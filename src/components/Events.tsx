@@ -22,7 +22,7 @@ const Events: React.FC = () => {
       image: "https://images.pexels.com/photos/8923057/pexels-photo-8923057.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
-      title: "Wednesday Word Encounter Service",
+      title: "(Wednesday Bible Study) Word Encounter Service",
       date: "Every Wednesday",
       time: "5:55 PM",
       location: "Main Sanctuary",
