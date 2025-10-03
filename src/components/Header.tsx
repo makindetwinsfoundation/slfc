@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-2 rounded-full">
+            <div className="bg-white p-2 rounded-full shadow-md">
               <img 
                 src="https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/slfclogo-removebg-preview.png" 
                 alt="Shining Light Family Church Logo" 

@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           {/* Church Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-3 rounded-full">
+              <div className="bg-white p-3 rounded-full shadow-md">
                 <img 
                   src="https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/slfclogo-removebg-preview.png" 
                   alt="Shining Light Family Church Logo" 

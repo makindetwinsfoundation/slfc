@@ -34,7 +34,7 @@ const LoginPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
         <div className="text-center mb-8">
-          <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-4 rounded-full w-20 h-20 mx-auto mb-4">
+          <div className="bg-white p-4 rounded-full w-20 h-20 mx-auto mb-4 shadow-lg border border-gray-200">
             <img 
               src="https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/slfclogo-removebg-preview.png" 
               alt="Shining Light Family Church Logo" 
