@@ -22,13 +22,6 @@ const Blog: React.FC = () => {
     fetchBlogPosts();
   }, []);
 
-  // Increment view count when a post is selected
-  useEffect(() => {
-    if (selectedPost) {
-      incrementViewCount(selectedPost.id);
-    }
-  }, [selectedPost]);
-
   const fetchBlogPosts = async () => {
     try {
       const { data, error } = await supabase
@@ -81,10 +74,6 @@ const Blog: React.FC = () => {
       setBlogPosts(prev => prev.map(post => 
         post.id === postId ? { ...post, views: post.views + 1 } : post
       ));
-      
-      if (selectedPost && selectedPost.id === postId) {
-        setSelectedPost(prev => prev ? { ...prev, views: prev.views + 1 } : null);
-      }
     } catch (error) {
       console.error('Error incrementing view count:', error);
     }
@@ -176,7 +165,12 @@ const Blog: React.FC = () => {
   const handlePostSelect = async (post: BlogPost) => {
     // Load comments for the selected post
     const comments = await fetchComments(post.id);
-    const postWithComments = { ...post, comments };
+    
+    // Increment view count
+    await incrementViewCount(post.id);
+    
+    // Create post with comments and incremented view count
+    const postWithComments = { ...post, comments, views: post.views + 1 };
     setSelectedPost(postWithComments);
   };
 
@@ -278,7 +272,7 @@ const Blog: React.FC = () => {
                   >
                     <Heart className={`h-6 w-6 ${likedPosts.has(selectedPost.id) ? 'fill-current' : ''}`} />
                     <span className="font-medium">
-                      {selectedPost.likes + (likedPosts.has(selectedPost.id) ? 1 : 0)}
+                      {selectedPost.likes}
                     </span>
                   </button>
                   <div className="flex items-center space-x-2 text-gray-600">
@@ -434,7 +428,7 @@ const Blog: React.FC = () => {
                     >
                       <Heart className={`h-5 w-5 ${likedPosts.has(post.id) ? 'fill-current' : ''}`} />
                       <span className="text-sm font-medium">
-                        {post.likes + (likedPosts.has(post.id) ? 1 : 0)}
+                        {post.likes}
                       </span>
                     </button>
                     <div className="flex items-center space-x-1 text-gray-500">
