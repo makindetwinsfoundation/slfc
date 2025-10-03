@@ -169,17 +169,10 @@ const Events: React.FC = () => {
             </div>
           ))}
         </div>
+        </div>
       </div>
     </section>
   );
 };
 
-        {/* Regular Events */}
-        <div className="mb-8">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Regular <span className="text-purple-600">Services</span>
-          </h3>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
 export default Events;
