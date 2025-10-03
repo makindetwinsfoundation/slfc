@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Church, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -35,7 +35,11 @@ const LoginPage: React.FC = () => {
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
         <div className="text-center mb-8">
           <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-4 rounded-full w-20 h-20 mx-auto mb-4">
-            <Church className="h-12 w-12 text-white" />
+            <img 
+              src="https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/slfclogo-removebg-preview.png" 
+              alt="Shining Light Family Church Logo" 
+              className="h-12 w-12 object-contain"
+            />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Pastor Login</h1>
           <p className="text-gray-600">Access your blog management dashboard</p>

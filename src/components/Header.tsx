@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Church } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +14,11 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-3">
             <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-2 rounded-full">
-              <Church className="h-8 w-8 text-white" />
+              <img 
+                src="https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/slfclogo-removebg-preview.png" 
+                alt="Shining Light Family Church Logo" 
+                className="h-8 w-8 object-contain"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Shining Light</h1>

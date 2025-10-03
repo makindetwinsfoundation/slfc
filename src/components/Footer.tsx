@@ -1,5 +1,5 @@
 import React from 'react';
-import { Church, Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -10,7 +10,11 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-3 rounded-full">
-                <Church className="h-8 w-8 text-white" />
+                <img 
+                  src="https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/slfclogo-removebg-preview.png" 
+                  alt="Shining Light Family Church Logo" 
+                  className="h-8 w-8 object-contain"
+                />
               </div>
               <div>
                 <h3 className="text-2xl font-bold">Shining Light</h3>
