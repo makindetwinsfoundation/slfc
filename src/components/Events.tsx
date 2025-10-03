@@ -22,15 +22,6 @@ const Events: React.FC = () => {
       image: "https://images.pexels.com/photos/8923057/pexels-photo-8923057.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
-      title: "Wednesday Bible Study",
-      date: "Every Wednesday",
-      time: "10:00 AM",
-      location: "Fellowship Hall",
-      description: "Deep dive into God's Word with discussion and prayer.",
-      recurring: true,
-      image: "https://images.pexels.com/photos/7671116/pexels-photo-7671116.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
-    },
-    {
       title: "Wednesday Word Encounter Service",
       date: "Every Wednesday",
       time: "5:55 PM",
