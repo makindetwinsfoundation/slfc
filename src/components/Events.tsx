@@ -110,10 +110,6 @@ const Events: React.FC = () => {
                           <span className="font-medium">{event.location}</span>
                         </div>
                       </div>
-                      
-                      <button className="mt-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        Learn More
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -160,10 +156,6 @@ const Events: React.FC = () => {
                       <span className="font-medium">{event.location}</span>
                     </div>
                   </div>
-                  
-                  <button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
-                    Learn More
-                  </button>
                 </div>
               </div>
             </div>

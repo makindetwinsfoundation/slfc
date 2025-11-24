@@ -73,11 +73,7 @@ const Ministries: React.FC = () => {
               </div>
               <div className="p-8">
                 <h4 className="text-2xl font-bold text-gray-900 mb-4">{ministry.title}</h4>
-                <p className="text-gray-600 leading-relaxed mb-6">{ministry.description}</p>
-                <button className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-300 flex items-center">
-                  Learn More
-                  <span className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-                </button>
+                <p className="text-gray-600 leading-relaxed">{ministry.description}</p>
               </div>
             </div>
           ))}
