@@ -10,6 +10,7 @@ import About from './components/About';
 import Ministries from './components/Ministries';
 import Events from './components/Events';
 import Blog from './components/Blog';
+import Give from './components/Give';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -21,6 +22,7 @@ const HomePage: React.FC = () => (
     <Ministries />
     <Events />
     <Blog />
+    <Give />
     <Contact />
     <Footer />
   </>

@@ -43,15 +43,18 @@ const Header: React.FC = () => {
             <a href="#blog" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
               Blog
             </a>
+            <a href="#give" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
+              Give
+            </a>
             <a href="#contact" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
               Contact
             </a>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300">
+            <a href="#give" className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300">
               Give Online
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -82,12 +85,15 @@ const Header: React.FC = () => {
               <a href="#blog" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
                 Blog
               </a>
+              <a href="#give" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
+                Give
+              </a>
               <a href="#contact" className="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">
                 Contact
               </a>
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300 mt-4">
+              <a href="#give" className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300 mt-4 inline-block text-center">
                 Give Online
-              </button>
+              </a>
             </nav>
           </div>
         )}
