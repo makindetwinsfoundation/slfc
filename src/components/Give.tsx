@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface DonationFormData {
@@ -18,6 +18,12 @@ interface DonationResponse {
   };
 }
 
+declare global {
+  interface Window {
+    FlutterwaveCheckout: (config: Record<string, unknown>) => void;
+  }
+}
+
 const Give: React.FC = () => {
   const [formData, setFormData] = useState<DonationFormData>({
     amount: '',
@@ -31,6 +37,17 @@ const Give: React.FC = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const [selectedAmount, setSelectedAmount] = useState<string>('');
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.flutterwave.com/v3.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const presetAmounts = ['5000', '10000', '25000', '50000', '100000'];
 
@@ -50,7 +67,7 @@ const Give: React.FC = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -64,36 +81,40 @@ const Give: React.FC = () => {
         return;
       }
 
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/flutterwave-payment`,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            amount: parseFloat(finalAmount),
-            currency: 'NGN',
-            customer_name: formData.name,
-            customer_email: formData.email,
-            customer_phone: formData.phone,
-            tx_ref: `donation-${Date.now()}`,
-            message: formData.message
-          })
-        }
-      );
-
-      const data: DonationResponse = await response.json();
-
-      if (data.status === 'success' && data.data?.link) {
-        window.location.href = data.data.link;
-      } else {
-        setError(data.message || 'Failed to process donation');
+      if (!window.FlutterwaveCheckout) {
+        setError('Payment system is loading. Please try again.');
+        setLoading(false);
+        return;
       }
+
+      const config = {
+        public_key: 'FLWPUBK_TEST-d1e1f1f0f0f0f0f0f0f0f0f0f0f0f0f_TEST',
+        tx_ref: `donation-${Date.now()}`,
+        amount: parseFloat(finalAmount),
+        currency: 'NGN',
+        payment_options: 'card,ussd,account,qr,banktransfer',
+        customer: {
+          email: formData.email,
+          name: formData.name,
+          phonenumber: formData.phone,
+        },
+        customizations: {
+          title: 'Shining Light Family Church',
+          description: formData.message || 'Support our ministry',
+          logo: 'https://raw.githubusercontent.com/makindetwinsfoundation/slfc/main/images/slfclogo-removebg-preview.png',
+        },
+        callback: () => {
+          setSuccess(true);
+          setLoading(false);
+        },
+        onclose: () => {
+          setLoading(false);
+        },
+      };
+
+      window.FlutterwaveCheckout(config);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
-    } finally {
       setLoading(false);
     }
   };
