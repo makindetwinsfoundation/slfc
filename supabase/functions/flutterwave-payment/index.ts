@@ -27,13 +27,9 @@ Deno.serve(async (req: Request) => {
   try {
     const payload: PaymentPayload = await req.json();
 
-    const flutterwaveKey = Deno.env.get("FLUTTERWAVE_SECRET_KEY");
+    const flutterwaveKey = 'FLWSECK_TEST-f804b42b2aa9a815f2142075fb6385db-X';
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-
-    if (!flutterwaveKey) {
-      throw new Error("Flutterwave secret key is not configured");
-    }
 
     const flutterwavePayload = {
       tx_ref: payload.tx_ref,

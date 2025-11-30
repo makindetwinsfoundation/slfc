@@ -88,7 +88,7 @@ const Give: React.FC = () => {
       }
 
       const config = {
-        public_key: 'FLWPUBK-6f27bc41a05e2125e9509f7898e37d57-X',
+        public_key: 'FLWPUBK_TEST-e995556f43e7826917d6dae77028eadb-X',
         tx_ref: `donation-${Date.now()}`,
         amount: parseFloat(finalAmount),
         currency: 'NGN',
