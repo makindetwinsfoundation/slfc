@@ -458,7 +458,7 @@ const Blog: React.FC = () => {
                 <BookOpen className="h-16 w-16 mx-auto" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">No blog posts yet</h3>
-              <p className="text-gray-600">Check back soon for inspiring messages from Pastor Michael Johnson.</p>
+              <p className="text-gray-600">Check back soon for inspiring messages from Rev Olubunmi Idowu.</p>
             </div>
           )}
         </div>
